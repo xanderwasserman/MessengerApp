@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -26,8 +27,10 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+import java.io.StringReader;
+import org.xml.sax.InputSource;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
@@ -77,22 +80,11 @@ public class D1Messenger extends javax.swing.JFrame {
 				
 			if (node.getNodeType() == Node.ELEMENT_NODE) {	
 				
-				Element eElement = (Element) node;
-				
 				if(searchTerm.equals(node.getNodeName())) {
-					
-					TransformerFactory tf = TransformerFactory.newInstance();
-					Transformer transformer;
-					transformer = tf.newTransformer();
-					StringWriter writer = new StringWriter();
-					transformer.transform(new DOMSource(node), new StreamResult(writer));
-					String XMLstring = writer.getBuffer().toString();
-					
-					deals = XMLstring;
+					deals = nodeToString(node);
 				}
 			}
 			}
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,6 +92,40 @@ public class D1Messenger extends javax.swing.JFrame {
 		return deals;
 		
 	}
+	
+	public String nodeToString(Node input) throws TransformerException {
+		TransformerFactory tf = TransformerFactory.newInstance();
+		Transformer transformer;
+		transformer = tf.newTransformer();
+		StringWriter writer = new StringWriter();
+		transformer.transform(new DOMSource(input), new StreamResult(writer));
+		String XMLstring = writer.getBuffer().toString();
+		
+		return XMLstring;
+	}
+	
+	 public Document convertStringToXML(String xmlString) 
+	    {
+	        //Parser that produces DOM object trees from XML content
+	        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	         
+	        //API to obtain DOM Document instance
+	        DocumentBuilder builder = null;
+	        try
+	        {
+	            //Create DocumentBuilder with default configuration
+	            builder = factory.newDocumentBuilder();
+	             
+	            //Parse the content to Document object
+	            Document doc = builder.parse(new InputSource(new StringReader(xmlString)));
+	            return doc;
+	        } 
+	        catch (Exception e) 
+	        {
+	            e.printStackTrace();
+	        }
+	        return null;
+	    }
 	
 
 	public D1Messenger(boolean hostOrConnect, String ip) {
@@ -204,6 +230,7 @@ public class D1Messenger extends javax.swing.JFrame {
 					}
 					if (br.ready()) { // if message is waiting to be received
 						String message = br.readLine();
+						Document receivedMessage = convertStringToXML(message);
 						messages.setText(messages.getText() +  ClientServer  + message);
 
 						try {
