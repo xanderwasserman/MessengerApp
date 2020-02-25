@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -20,6 +21,19 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EtchedBorder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+import java.io.File;
 
 public class D1Messenger extends javax.swing.JFrame {
 
@@ -44,7 +58,48 @@ public class D1Messenger extends javax.swing.JFrame {
 	
 	
 	
-	
+	public String retreiveXMLElement(String searchTerm) {
+		
+		String deals = null;
+		
+		try {
+			
+			File fXMLfile = new File("C:\\Users\\xande\\Google Drive\\Varsity\\Masters\\Reconfigurable control\\TaskD1\\SpecialsXML.xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(fXMLfile);
+			
+			doc.getDocumentElement().normalize();
+			NodeList nList = doc.getChildNodes();
+			
+			for (int i = 0; i < nList.getLength(); i++) {
+				Node node = nList.item(i);
+				
+			if (node.getNodeType() == Node.ELEMENT_NODE) {	
+				
+				Element eElement = (Element) node;
+				
+				if(searchTerm.equals(node.getNodeName())) {
+					
+					TransformerFactory tf = TransformerFactory.newInstance();
+					Transformer transformer;
+					transformer = tf.newTransformer();
+					StringWriter writer = new StringWriter();
+					transformer.transform(new DOMSource(node), new StreamResult(writer));
+					String XMLstring = writer.getBuffer().toString();
+					
+					deals = XMLstring;
+				}
+			}
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return deals;
+		
+	}
 	
 
 	public D1Messenger(boolean hostOrConnect, String ip) {
@@ -162,41 +217,8 @@ public class D1Messenger extends javax.swing.JFrame {
 						
 						if (HostClient) {
 							
-							try {
-					            int flag = 0;
-								FileReader reader = new FileReader("Specials.txt");
-					            BufferedReader bufferedReader = new BufferedReader(reader);
-					 
-					            String line;
-					 
-					            while (((line = bufferedReader.readLine()) != null)&&(flag == 0)) {
-					            	
-					            	String[] readtext = line.split(",");
-					            	System.out.println(Arrays.toString(readtext));
-					            	if(message.equals(readtext[0])){
-					            		
-					            		flag = 1;
-					            		System.out.println("Message: " + message);
-					            		System.out.println(readtext[0]);
-					            		String[] readline = readtext[1].split(";");
-					            		
-					            		int size = readline.length;
-					            		for (int i = 0; i<size; i++) {
-					            			
-					            			PrintWriterOut.println(readline[i]); // send the message on the socket
-											messages.setText(messages.getText() + "\nMe: " + readline[i]);
-					            			
-					            		}		
-					            		
-					            	}
-					            	
-					            }
-					            flag = 0;
-					            reader.close();
-					 
-					        } catch (IOException e) {
-					            e.printStackTrace();
-					        }
+							String XMLstring = retreiveXMLElement(message);
+							PrintWriterOut.println(XMLstring); // send the message on the socket
 
 					}
 					Thread.sleep(80); // sleeps the message receiving thread for 80ms
