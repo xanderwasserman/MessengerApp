@@ -1,0 +1,32 @@
+2020-02-21T15:14:38.477157:
+[Client]: hhjjh
+2020-02-21T15:14:45.819581:
+[Client]: Monday 
+2020-02-21T15:15:00.717200:
+[Client]: Monday
+2020-02-21T15:15:00.731885:
+[Server]: Trumpet Tree:	All-day Pizza Special
+2020-02-21T15:15:00.814637:
+[Server]: Tiger's Milk:	2 for 1 cheese or mushroom burgers
+2020-02-21T15:15:00.900582:
+[Server]: Watami:	Buy 2 get 1 free for R125
+2020-02-21T15:16:00.281699:
+[Client]: bleh
+2020-02-21T15:16:06.945459:
+[Client]: Monday
+2020-02-21T15:16:06.961605:
+[Server]: Trumpet Tree:	All-day Pizza Special
+2020-02-21T15:16:07.047289:
+[Server]: Tiger's Milk:	2 for 1 cheese or mushroom burgers
+2020-02-21T15:16:07.128581:
+[Server]: Watami:		Buy 2 get 1 free for R125
+2020-02-22T09:35:17.024898:
+[Client]: Tuesday
+2020-02-22T09:35:17.038421:
+[Server]: Tiger's Milk:	2 for 1 Tacos (10:00 - 22:00). 
+2020-02-22T09:35:17.120705:
+[Server]: Col Cacchios:	2 for 1 Pizza.
+2020-02-22T09:35:34.627151:
+[Client]: hello
+2020-02-22T09:35:41.170045:
+[Server]: how are you

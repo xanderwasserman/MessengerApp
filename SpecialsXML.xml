@@ -1,0 +1,38 @@
+<!DOCTYPE Specials PUBLIC "Specials" "Specials.dtd">
+<Specials>
+	<Monday>
+		<Special1 Place="Trumpet Tree" Time="All day" Special="Pizza"></Special1>
+		<Special2 Place="Tiger's Milk" Special="2 for 1 Cheese or Mushroom burgers"></Special2>
+		<Special3 Place="Watami" Special="Buy 2 get 1 free for R125"></Special3>
+		<Special4 Place="Spur" Special="Burger, Chips &amp; Onion rings for R50"></Special4>
+		<Special5 Place="Nuri" Special="15% off for students"></Special5></Monday>
+	<Tuesday>
+		<Special1 Place="Julian's" Special="Wrap with chips for R55.95"></Special1>
+		<Special2 Place="Tiger's Milk" Special="2 for 1 Tacos" Time="10:00 - 22:00"></Special2>
+		<Special3 Place="Trumpet Tree" Special="All tapas R55"></Special3>
+		<Special4 Place="Blue Crane &amp; the Butterfly" Special="20% off for students"></Special4>
+		<Special5 Place="Java" Special="Burger, Chips &amp; Onion rings for R49"></Special5>
+		<Special6 Place="Col Cacchios" Special="2 for 1 pizza"></Special6></Tuesday>
+	<Wednesday>
+		<Special1 Place="Julian's" Special="Nachos R59.95"></Special1>
+		<Special2 Place="Java" Special="50% off pizzas"></Special2>
+		<Special3 Place="Steers" Special="Whacky Wednesday"></Special3>
+		<Special4 Place="Nuri" Special="Free delivery" Time="12:00 - 16:00"></Special4>
+		<Special5 Place="The Happy Oak" Special="2 for 1 meal specials"></Special5>
+		<Special6 Place="Marcel's" Special="Free toppings with any tup of frozen yoghurt"></Special6></Wednesday>
+	<Thursday>
+		<Special1 Place="Panarottis" Special="Eat as much as you like for R90"></Special1>
+		<Special2 Place="Trumpet Tree" Special="2 chicken strips for R100"></Special2>
+		<Special3 Place="Java" Special="50% off all pasta"></Special3>
+		<Special4 Place="Hudsons" Special="Sliders for R25"></Special4>
+		<Special5 Place="Flame &amp; Ash" Special="400g ribs and chips foor R95"></Special5>
+		<Special6 Place="Julian's" Special="Pizza for R55.95"></Special6></Thursday>
+	<Friday>
+		<Special1 Place="Panarottis" Special="Breakfast for R35"></Special1>
+		<Special2 Place="Julian's" Special="2 for 1 pasta"></Special2></Friday>
+	<Saturday>
+		<Special1 Place="Julian's" Special="Margarita pizza for R29.95"></Special1>
+		<Special2 Place="Hudsons" Special="All you can eat wings and fries"></Special2></Saturday>
+	<Sunday>
+		<Special1 Place="Julian's" Special="2 for 1 burgers"></Special1>
+		<Special2 Place="Mystic Boer" Special="Basic Margarita for R42"></Special2></Sunday></Specials>
